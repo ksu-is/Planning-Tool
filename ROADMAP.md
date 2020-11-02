@@ -13,4 +13,4 @@ Sprint 3:
     Test the page
     Host the webpage
     Create powerpoint
-    Optiona(Set up a reports page if time allows)
+    Optiona(Set up a reports page if time allows) 
