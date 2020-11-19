@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+        {% comment %} <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script> {% endcomment %}
+        {% comment %} <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script> {% endcomment %}
+        <link rel="stylesheet" href="styles.css">
+        
+    </head>
+    <body>
+        <h1>Sprint Planning Tool</h1>
+        <div class="content">
+            <form id="add-team-form"></form>
+            <ul id="team-list"></ul>
+        </div>
+    
+        <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDTnLy1kcY2T4Ill2UACUXnSyrCe8E9Z68",
+            authDomain: "sprint-planning-tool.firebaseapp.com",
+            databaseURL: "https://sprint-planning-tool.firebaseio.com",
+            projectId: "sprint-planning-tool",
+            storageBucket: "sprint-planning-tool.appspot.com",
+            messagingSenderId: "11450019145",
+            appId: "1:11450019145:web:9f9315188bc3c253f87e98",
+            measurementId: "G-RDSB3JR8PH"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //firebase.analytics();
+        const db = firebase.firestore()
+        db.settings({timestampInSnapshots: true });
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>
