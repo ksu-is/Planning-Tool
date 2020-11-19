@@ -1,16 +1,19 @@
 <html>
     <head>
+        <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script> 
         <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
-        {% comment %} <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script> {% endcomment %}
-        {% comment %} <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script> {% endcomment %}
+        <!--<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script> -->
         <link rel="stylesheet" href="styles.css">
         
     </head>
     <body>
         <h1>Sprint Planning Tool</h1>
         <div class="content">
-            <form id="add-team-form"></form>
-            <ul id="team-list"></ul>
+            <form id="add-team-form">
+                <input type="text" name="team_name" placehoolder="Team Name">
+                <button>Add Team</button>
+            </form>
+            <ul id="teams-list"></ul>
         </div>
     
         <script>
@@ -29,8 +32,8 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         //firebase.analytics();
-        const db = firebase.firestore()
-        db.settings({timestampInSnapshots: true });
+        const db = firebase.firestore();
+        db.settings({timestampsInSnapshots: true });
         </script>
         <script src="app.js"></script>
     </body>
