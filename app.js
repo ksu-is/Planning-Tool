@@ -7,7 +7,7 @@ function renderTeams(doc){
     let team_name = document.createElement('span');
 
     li.setAttribute('data-id', doc.id);
-    name.textContent = doc.data().team_name;
+    team_name.textContent = doc.data().team_name;
 
     li.appendChild(team_name);
 
@@ -22,7 +22,7 @@ db.collection('teams').get().then((snapshot) => {
     //console.log(snapshot.docs);
     snapshot.docs.forEach(doc => {
         //Logs data to the console
-        console.log(doc.data);
+        console.log(doc.data());
         renderTeams(doc);
     })
 })
