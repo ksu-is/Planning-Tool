@@ -5,20 +5,27 @@ const form = document.querySelector('#add-team-form');
 function renderTeams(doc){
     let li = document.createElement('li');
     let team_name = document.createElement('span');
+    let cross = document.createElement('div');
 
     li.setAttribute('data-id', doc.id);
     team_name.textContent = doc.data().team_name;
+    cross.textContent = 'X'
 
     li.appendChild(team_name);
+    li.appendChild(cross);
 
     teamList.appendChild(li);
+
+    //deleteing data
+    cross.addEventListener('click', (e) => {
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute('data-id');
+        db.collection('teams').doc(id).delete();
+    })
 }
 
-
-//Geting Data
-
 //Async call to grab the data
-db.collection('teams').get().then((snapshot) => {
+db.collection('teams').where('team_name', '!=', 'null').orderBy('team_name').get().then((snapshot) => {
     //console.log(snapshot.docs);
     snapshot.docs.forEach(doc => {
         //Logs data to the console
@@ -35,3 +42,5 @@ form.addEventListener('submit', (e) =>{
     });
     form.team_name.value = '';
 })
+
+
