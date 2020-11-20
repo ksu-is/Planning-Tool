@@ -8,3 +8,5 @@ Class Project - Sprint planning tool to help sprint team plan work based on hour
 11/18 - Create a method to add date to the Firebase db and display db records to the page
 
 11/20 - Create delete function for removing records from the data base and ordering the list of teams by team name
+
+11/20 - Add Real Time update functionality

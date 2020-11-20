@@ -25,14 +25,15 @@ function renderTeams(doc){
 }
 
 //Async call to grab the data
-db.collection('teams').where('team_name', '!=', 'null').orderBy('team_name').get().then((snapshot) => {
+/* db.collection('teams').where('team_name', '!=', 'null').orderBy('team_name').get().then((snapshot) => {
     //console.log(snapshot.docs);
     snapshot.docs.forEach(doc => {
         //Logs data to the console
         console.log(doc.data());
         renderTeams(doc);
     })
-})
+}) */
+
 
 //Saving Data
 form.addEventListener('submit', (e) =>{
@@ -41,6 +42,23 @@ form.addEventListener('submit', (e) =>{
         team_name: form.team_name.value,
     });
     form.team_name.value = '';
+});
+
+//Real time listerner to get data
+db.collection('teams').orderBy('team_name').onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    //console.log(changes);
+    changes.forEach(change => {
+        //console.log(change.doc.data())
+        if(change.type == 'added'){
+            renderTeams(change.doc)
+        }
+        else if (change.type == 'removed'){
+            let li = teamList.querySelector('[data-id=' + change.doc.id + ']');
+            teamList.removeChild(li);
+        }
+        else {
+
+        }
+    })
 })
-
-
